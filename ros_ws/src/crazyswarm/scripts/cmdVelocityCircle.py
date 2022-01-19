@@ -4,7 +4,7 @@ import numpy as np
 from pycrazyswarm import *
 
 
-Z = 1.0
+Z = 0.6
 sleepRate = 30
 
 
@@ -32,4 +32,4 @@ if __name__ == "__main__":
 
     allcfs.takeoff(targetHeight=Z, duration=1.0+Z)
     timeHelper.sleep(2 + Z)
-    goCircle(timeHelper, allcfs.crazyflies[0], totalTime=4, radius=1, kPosition=1)
+    goCircle(timeHelper, allcfs.crazyflies[0], totalTime=4, radius=0.3, kPosition=1)
