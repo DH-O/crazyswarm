@@ -3,7 +3,7 @@
 import numpy as np
 from pycrazyswarm import *
 
-Z = 1.0
+Z = 0.6
 
 if __name__ == "__main__":
     swarm = Crazyswarm()

@@ -103,28 +103,28 @@ def takeoff():
     for cf in cfs:
         cf.takeoff(targetHeight=Z, duration=1.0 + Z)
     timeHelper.sleep(1.0 + Z)
-    print "Take off"
+    print("Take off")
 
 
 def startPlanning():
     global planning_started
     planning_started = True
     allcfs.startPlanning()
-    print "Start planning"
+    print("Start planning")
 
 
 def startPatrol():
     global planning_started
     planning_started = True
     allcfs.startPatrol()
-    print "Start patrol"
+    print("Start patrol")
 
 
 def back():
     global planning_started
     planning_started = True
     allcfs.stopPatrol()
-    print "Go back to start position"
+    print("Go back to start position")
 
 
 def land():
@@ -135,19 +135,19 @@ def land():
     else:
         for cf in cfs:
             cf.land(targetHeight=0.02, duration=1.0 + Z)
-    print "Land"
+    print("Land")
 
 
 def emergencyStop():
     global planning_started
     planning_started = False
     allcfs.emergency()
-    print "Emergency stop"
+    print("Emergency stop")
 
 
 def setMission():
     name = combo.get() + ".json"
-    print "Set mission: " + name
+    print("Set mission: " + name)
     command = 'rosservice call /change_mission "' + name + '"'
     os.system(command)
 
@@ -166,35 +166,35 @@ def handleKey(event):
     if k == 'w':
         for cf in cfs:
             cf.goTo(np.array([0.2, 0, 0]), 0, 0.05, relative=True)
-        print "front"
+        print("front")
     elif k == 's':
         for cf in cfs:
             cf.goTo(np.array([-0.2, 0, 0]), 0, 0.05, relative=True)
-        print "back"
+        print("back")
     elif k == 'd':
         for cf in cfs:
             cf.goTo(np.array([0, -0.2, 0]), 0, 0.05, relative=True)
-        print "right"
+        print("right")
     elif k == 'a':
         for cf in cfs:
             cf.goTo(np.array([0, 0.2, 0]), 0, 0.05, relative=True)
-        print "left"
+        print("left")
     elif k == 'z':
         for cf in cfs:
             cf.goTo(np.array([0, 0, 0.1]), 0, 0.03, relative=True)
-        print "up"
+        print("up")
     elif k == 'c':
         for cf in cfs:
             cf.goTo(np.array([0, 0, -0.1]), 0, 0.03, relative=True)
-        print "down"
+        print("down")
     elif k == 'q':
         for cf in cfs:
             cf.goTo(np.array([0, 0, 0]), math.pi / 8, 0.1, relative=True)
-        print "turn left"
+        print("turn left")
     elif k == 'e':
         for cf in cfs:
             cf.goTo(np.array([0, 0, 0]), -math.pi / 8, 0.1, relative=True)
-        print "turn right"
+        print("turn right")
     elif k == 'k':
         emergencyStop()
     elif k == 't':
@@ -208,7 +208,7 @@ def handleKey(event):
     elif k == 'b':
         back()
     else:
-        print "Invalid key"
+        print("Invalid key") 
 
 
 if __name__ == '__main__':
