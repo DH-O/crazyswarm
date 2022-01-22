@@ -2,7 +2,7 @@ import argparse
 
 import numpy as np
 
-from . import genericJoystick
+# from . import genericJoystick
 
 # Building the parser in a separate function allows sphinx-argparse to
 # auto-generate the documentation for the command-line flags.
@@ -35,7 +35,7 @@ class Crazyswarm:
         args, unknown = parser.parse_known_args(args)
 
         if crazyflies_yaml is None:
-            crazyflies_yaml = "../launch/crazyflies.yaml"
+            crazyflies_yaml = "/home/jbs/crazyswarm/ros_ws/src/crazyswarm/launch/crazyflies.yaml"
         if crazyflies_yaml.endswith(".yaml"):
             crazyflies_yaml = open(crazyflies_yaml, 'r').read()
 
@@ -49,4 +49,4 @@ class Crazyswarm:
             self.timeHelper = TimeHelper()
             if args.writecsv:
                 print("WARNING: writecsv argument ignored! This is only available in simulation.")
-        self.input = genericJoystick.Joystick(self.timeHelper)
+        # self.input = genericJoystick.Joystick(self.timeHelper)
