@@ -4,7 +4,7 @@ import yaml
 import math
 import sys
 import tf_conversions
-sys.path.append('/home/jbs/crazyswarm/ros_ws/src/crazyswarm/scripts')
+sys.path.append('/home/dho-20/crazyswarm/ros_ws/src/crazyswarm/scripts')
 import rospy
 import numpy as np
 from crazyflie_driver.srv import *
@@ -131,10 +131,12 @@ class FullstateServer():
         self.fullstatelist = fullstatelist 
     def run(self, event):
         if door == True:
+            rospy.sleep(0.02)
             # print("planner runs")
             for i in ids: 
                 self.fullstatelist[i-1].start()
         if stop == True:
+            rospy.sleep(0.001)
             for j in ids:
                 self.fullstatelist[j-1].land()
 
@@ -149,7 +151,7 @@ class FullstateServer():
 if __name__ == '__main__':
     
     rospy.init_node('planner', anonymous=False)  
-    allCrazyflies = read_by_id("/home/jbs/crazyswarm/ros_ws/src/crazyswarm/launch/allCrazyflies.yaml")
+    allCrazyflies = read_by_id("/home/dho-20/crazyswarm/ros_ws/src/crazyswarm/launch/allCrazyflies.yaml")
     # enabled = read_by_id("/home/jbs/crazyswarm/ros_ws/src/crazyswarm/launch/crazyflies.yaml").keys()
     # with open("/home/jbs/crazyswarm/ros_ws/src/crazyswarm/launch/crazyflieTypes.yaml", 'r') as ymlfile:
     #     data = yaml.load(ymlfile)

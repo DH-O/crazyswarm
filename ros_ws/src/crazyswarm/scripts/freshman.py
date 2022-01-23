@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import Tkinter
+import tkinter
 import numpy as np
 import yaml
 import rospy
@@ -78,7 +78,7 @@ def read_by_id(path):
     return by_id
 
 def mkbutton(parent, name, command):
-    button = Tkinter.Button(parent, text=name, command=command)
+    button = tkinter.Button(parent, text=name, command=command)
     button.pack(side='left')
 
 def takeoff():
@@ -118,7 +118,7 @@ if __name__ == "__main__":
     cfs = [allcfs.crazyfliesById[i] for i in ids]
     planning_started = False
 
-    allCrazyflies = read_by_id("/home/jbs/crazyswarm/ros_ws/src/crazyswarm/launch/allCrazyflies.yaml")
+    allCrazyflies = read_by_id("/home/dho-20/crazyswarm/ros_ws/src/crazyswarm/launch/allCrazyflies.yaml")
     
     ids = []
     planner = []
@@ -130,15 +130,15 @@ if __name__ == "__main__":
         rospy.wait_for_service("start/"+str(i))
         rospy.wait_for_service("land/"+str(i))
 
-    window = Tkinter.Tk()
+    window = tkinter.Tk()
     window.title("cmd")
 
     window.geometry("640x400+100+100")
     window.resizable(False, False)
-    frame = Tkinter.Frame(window)
+    frame = tkinter.Frame(window)
     
     # construct all the checkboxes
-    scriptButtons = Tkinter.Frame(window)
+    scriptButtons = tkinter.Frame(window)
     mkbutton(scriptButtons, "Takeoff", takeoff)
     mkbutton(scriptButtons, "Start", start)
     mkbutton(scriptButtons, "Land", land)
